@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      姓：<input type="text" v-model="firstName" /><br />
+      名：<input type="text" v-model="lastName" /><br />
+      <div>全名：{{fullName}}</div>
+    </div>
+    <script>
+      new Vue({
+        el: "#root",
+        data: {
+          firstName: "",
+          lastName: "",
+        },
+        computed: {
+          //   fullName: {
+          //     // get作用：当有人读取fullName时，就会执行，返回fullName的值
+          //     get() {
+          //       return this.firstName + "-" + this.lastName;
+          //     },
+          //     // set,在fullName被修改时调用
+          //     set(value) {
+          //       const arr = value.split("-");
+          //       this.firstName = arr[0];
+          //       this.lastName = arr[1];
+          //     },
+          //   },
+
+          // 简写形式：只读不改的情况下使用
+          fullName: function () {
+            return this.firstName + "-" + this.lastName;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

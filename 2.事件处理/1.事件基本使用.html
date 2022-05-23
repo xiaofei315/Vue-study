@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <button v-on:click="handleClick1">点击事件</button>
+      <button @click="handleClick2(2,$event)">点击事件</button>
+    </div>
+    <script>
+      const vm = new Vue({
+        data: {},
+        methods: {
+          handleClick1: function (e) {
+            console.log(e);
+            alert("点击事件触发");
+          },
+          handleClick2: function (value, event) {
+            console.log(value, event);
+            alert("点击事件触发" + value);
+          },
+        },
+      });
+      vm.$mount("#root");
+    </script>
+  </body>
+</html>
