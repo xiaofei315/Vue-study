@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <div id="root">
+      <!-- 绑定样式，字符串写法，适用于：样式的类名不确定，需要动态指定 -->
+      <div :class="demo"></div>
+      <!-- 绑定样式，数组写法，适用于：要绑定的样式个数不确定、名字也不确定 -->
+      <div :class="classArr"></div>
+      <!-- 绑定样式，对象写法，适用于：要绑定的样式个数确定、名字确定、但需要动态决定是否使用 -->
+      <div class="classObj"></div>
+    </div> 
+  </body>
+</html>
