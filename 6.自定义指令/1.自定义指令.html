@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <div v-text="n"></div>
+      <div v-big="n"></div>
+      <!-- 指令有多个单词组成 -->
+      <div v-big-number="n"></div>
+      <button @click="n++">n+1</button>
+      <hr />
+      <input type="text" v-fbind:value="n" />
+    </div>
+    <script>
+      const vm = new Vue({
+        el: "#root",
+        data: {
+          n: 1,
+        },
+        directives: {
+          // big函数何时会被调用？ 1、指令与元素成功绑定的时候；2、指令所在的模板被重新解析的时候
+          big(element, binding) { // this指向window
+            element.innerText = binding.value * 10;
+            // console.log(element, binding);
+          },
+          "big-number": function (element, binding) {
+            element.innerText = binding.value * 10;
+            // console.log(element, binding);
+          },
+          fbind: {
+            // 指令与元素成功绑定的时候（一开始）
+            bind(element, binding) {
+              element.value = binding.value;
+            },
+            // 指令所在元素插入页面时
+            inserted(element, binding) {
+              element.focus();
+            },
+            // 指令所在的模板被重新解析的时候
+            update(element, binding) {
+              element.value = binding.value;
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

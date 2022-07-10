@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+
+    <style></style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script>
+      new Vue({
+        el: "#root",
+        template: `<div>
+        <div :style="{opacity}">hello world</div>
+        <button @click="change">点我</button>
+      </div>`,
+        data: {
+          n: 1,
+          opacity: 1,
+        },
+        methods: { 
+          change() {
+            // setInterval(() => {
+            //   this.opacity -= 0.01;
+            //   if (this.opacity <= 0) this.opacity = 1;
+            // }, 16);
+            this.opacity -= 0.1;
+            console.log(this.opacity);
+          },
+        },
+        beforeUpdate() {
+          console.log("beforeUpdate");
+        },
+        updated() {
+          console.log("updated");
+        },
+        beforeDestroy() {
+          // 关闭定时器、取消订阅消息、解绑自定义事件
+          
+        },
+        destroyed() {
+          
+        },
+      });
+    </script>
+  </body>
+</html>
