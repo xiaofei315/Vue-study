@@ -18,6 +18,7 @@
         template: `<div>
         <div :style="{opacity}">hello world</div>
         <button @click="change">点我</button>
+        <button @click="stop">暂停</button>
       </div>`,
         data: {
           n: 1,
@@ -25,13 +26,16 @@
         },
         methods: { 
           change() {
-            // setInterval(() => {
-            //   this.opacity -= 0.01;
-            //   if (this.opacity <= 0) this.opacity = 1;
-            // }, 16);
-            this.opacity -= 0.1;
-            console.log(this.opacity);
+           this.timer = setInterval(() => {
+              this.opacity -= 0.01;
+              if (this.opacity <= 0) this.opacity = 1;
+            }, 16);
+            // this.opacity -= 0.1;
+            // console.log(this.opacity);
           },
+          stop() {
+            this.$destroy()
+          }
         },
         beforeUpdate() {
           console.log("beforeUpdate");
@@ -41,10 +45,11 @@
         },
         beforeDestroy() {
           // 关闭定时器、取消订阅消息、解绑自定义事件
+          clearInterval(this.timer)
           
         },
         destroyed() {
-          
+          // clearInterval(this.timer)
         },
       });
     </script>
