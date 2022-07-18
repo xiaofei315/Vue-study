@@ -1,15 +1,11 @@
 <template>
-  <div class="box">
-    我是根组件
-    <A></A>
-  </div>
-
+  <Bro3></Bro3>
+  <Bro4></Bro4>
 </template>
 <script setup lang="ts">
-import {provide} from "vue";
-import A from './components/A.vue'
+import Bro3 from "./components/Bro3.vue";
+import Bro4 from "./components/Bro4.vue";
 
-provide("flag", true)
 </script>
 <style scoped>
 html, body {
@@ -17,11 +13,4 @@ html, body {
   overflow: hidden;
 }
 
-.box {
-  width: 300px;
-  height: 300px;
-  background: #2c3e50;
-  border: 1px solid #42b983;
-  position: relative;
-}
 </style>
