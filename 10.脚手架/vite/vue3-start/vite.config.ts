@@ -8,8 +8,9 @@ export default defineConfig({
     plugins: [vue(), vueJsx()],
     resolve: {
         alias:{
-            layout:path.resolve(__dirname,'./src/layout'),
-            components: path.resolve(__dirname, './src/components'),
+            "@": path.resolve(__dirname,'./src'),
+            "layout":path.resolve(__dirname,'./src/layout'),
+            "components": path.resolve(__dirname, './src/components'),
         },
         extensions:['.vue','.js','ts','tsx']
     }
