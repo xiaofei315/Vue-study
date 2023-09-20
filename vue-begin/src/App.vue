@@ -2,14 +2,37 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 // import HelloWorld from './components/HelloWorld.vue'
+import VModelObj from "./components/vModelObj/vModelObj.vue";
+import VModelArr from "./components/vModelArr/vModelArr.vue";
+
 export default {
+  components: {VModelArr, VModelObj},
   data() {
     return {
       name: 'xiaofei',
       uname: 'dafei',
       msg: '<span>你好</span>',
       id: 'd1',
-      attributeName: 'id'
+      attributeName: 'id',
+      formData: {
+        name: 'xiaofei',
+        age: 12
+      },
+      formDataArr: [1, 2, 3, 4, 5]
+    }
+  },
+  watch: {
+    formData: {
+      handler: function (val) {
+        console.log(888, val)
+      },
+      deep: true
+    },
+    formDataArr: {
+      handler: function (val) {
+        console.log(999, val)
+      },
+      deep: true
     }
   },
   methods: {
@@ -51,6 +74,12 @@ export default {
   <!-- 计算属性 -->
   <p>{{ reverseMsg }}</p>
 
+  <div>****************************************</div>
+<!--  <v-model-obj :form-data="formData"></v-model-obj>-->
+    <v-model-obj v-model:form-data="formData"></v-model-obj>
+  <div>****************************************</div>
+  <v-model-arr :form-data="formDataArr"></v-model-arr>
+
 </template>
 
 <style>
@@ -69,7 +98,7 @@ export default {
 
 .d1 {
   /* font-size: 100; */
-  color: 'red'
+  color: red;
 }
 
 #d2 {
